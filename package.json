@@ -1,0 +1,42 @@
+{
+  "name": "symfio-contrib-auth"
+, "version": "0.1.0"
+, "description": "Authentication plugin. Uses tokens."
+, "keywords": ["symfio-plugin", "symfio-contrib", "auth"]
+, "homepage": "http://symf.io/plugins/contrib-auth"
+, "bugs": {
+    "url": "https://github.com/symfio/symfio-contrib-auth/issues"
+  , "email": "webmaster@rithis.com"
+  }
+, "author": {
+    "name": "Vyacheslav Slinko"
+  , "email": "vyacheslav.slinko@gmail.com"
+  }
+, "main": "lib/auth"
+, "repository": {
+    "type": "git"
+  , "url": "git://github.com/symfio/symfio-contrib-auth.git"
+  }
+, "scripts": {
+    "test": "grunt simplemocha"
+  }
+, "dependencies": {
+    "lodash": "~1.1"
+  , "ms": "~0.6"
+  }
+, "devDependencies": {
+    "symfio": "~1.0"
+  , "symfio-suite": "~1.0"
+  , "symfio-contrib-express": "~0.1"
+  , "symfio-contrib-mongoose": "~0.1"
+  , "symfio-contrib-fixtures": "~0.1"
+  , "grunt": "~0.4"
+  , "grunt-simple-mocha": "~0.3"
+  , "grunt-coffeelint": "~0.0"
+  }
+, "engines": {
+    "node": "~0.8"
+  , "npm": "~1.2"
+  , "coffee-script": "~1.6"
+  }
+}
