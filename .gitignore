@@ -1,1 +1,10 @@
+.components
+
+# ignore vendors
 /node_modules/
+/example/public/components/
+
+# ignore compiled assets
+*.html
+*.js
+*.css

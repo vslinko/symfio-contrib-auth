@@ -1,6 +1,7 @@
 symfio = require "symfio"
 plugin = require "../lib/auth"
 suite = require "symfio-suite"
+path = require "path"
 
 
 describe "contrib-auth plugin", ->
@@ -9,6 +10,7 @@ describe "contrib-auth plugin", ->
     @tokenHash = "0123456789abcdef01234567"
     @model = findOne: @sandbox.stub()
     @app = use: @sandbox.stub()
+    @assets = @sandbox.stub()
     @req = get: @sandbox.stub().returns "Token #{@tokenHash}"
     @res = send: @sandbox.stub()
 
@@ -18,6 +20,7 @@ describe "contrib-auth plugin", ->
 
     @connection.model.returns @model
 
+    @container.set "assets serve helper", @assets
     @container.set "connection", @connection
     @container.set "mongoose", @mongoose
     @container.set "app", @app
@@ -104,3 +107,15 @@ describe "contrib-auth plugin", ->
 
     @expect(@res.send).to.have.been.calledOnce
     @expect(@res.send).to.have.been.calledWith 404
+
+  it "should respond with served plugin", wrapper ->
+    @req.method = "GET"
+    @req.url = "/symfio-auth/plugin.js"
+
+    assets = @sandbox.stub()
+    @container.set "assets serve helper", assets
+
+    plugin @container, ->
+
+    @expect(assets.firstCall.args[0]).to.equal path.join __dirname, "../public"
+

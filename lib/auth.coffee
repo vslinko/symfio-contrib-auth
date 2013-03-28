@@ -1,4 +1,5 @@
 crypto = require "crypto"
+path = require "path"
 ms = require "ms"
 _ = require "lodash"
 
@@ -8,9 +9,12 @@ module.exports = (container, callback) ->
   mongoose = container.get "mongoose"
   expires = ms container.get "auth token expiration period", "7d"
   logger = container.get "logger"
+  assets = container.get "assets serve helper"
   app = container.get "app"
 
   logger.info "loading plugin", "contrib-auth"
+
+  assets path.join __dirname, "..", "public"
 
   hashDigest = (data) ->
     hash = crypto.createHash "sha256"

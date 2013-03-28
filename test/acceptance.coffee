@@ -16,7 +16,7 @@ describe "contrib-auth example", ->
         @expect(res.body).to.have.property "token"
 
         process.nextTick =>
-          test = @http.get "/"
+          test = @http.get "/user"
 
           test.req (req) ->
             req.set "Authorization", "Token #{res.body.token}"
@@ -44,4 +44,13 @@ describe "contrib-auth example", ->
 
       test.res (res) =>
         @expect(res).to.have.status 401
+        callback()
+
+    it "should respond with served plugin", wrapper (callback) ->
+      test = @http.get "/symfio-auth/plugin.js"
+
+      test.res (res) =>
+        @expect(res).to.have.status 200
+        @expect(res.header).to.have.deep.property "content-type",
+          "application/javascript"
         callback()
