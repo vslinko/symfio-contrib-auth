@@ -1,12 +1,12 @@
-div(ng-show="invalid") {{ errorMessage }}
+div.symfio-auth-error-message(ng-show="invalid") {{ errorMessage }}
 
-div
+div.symfio-auth-login-text
   label(ng-hide="showPlaceholders") {{ loginText }}
   input(name="username", data-ng-model="user.username", placeholder="{{ (showPlaceholders && loginText) || '' }}")
 
-div
+div.symfio-auth-password-text
   label(ng-hide="showPlaceholders") {{ passwordText }}
   input(name="password", type="password", data-ng-model="user.password", placeholder="{{ (showPlaceholders && passwordText) || '' }}")
 
-div
+div.symfio-auth-button-text
   button(data-ng-click="submit()") {{ buttonText }}

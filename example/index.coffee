@@ -3,6 +3,7 @@ path = require "path"
 fs = require "fs.extra"
 
 module.exports = container = symfio "example", __dirname
+container.set "port", 3000
 container.set "public directory", path.join __dirname, "public"
 container.set "components", [
   "angular#~1.0",

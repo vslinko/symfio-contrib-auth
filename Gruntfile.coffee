@@ -3,6 +3,7 @@ module.exports = (grunt) ->
     simplemocha:
       acceptance: "test/acceptance.coffee"
       unit: "test/unit.coffee"
+      publicAcceptance: "test/public/acceptance.coffee"
       options: reporter: process.env.REPORTER or "spec"
     coffeelint:
       examples: "example/**/*.coffee"
