@@ -4,7 +4,6 @@ suite = require "symfio-suite"
 describe "contrib-auth example", ->
   container = require "../example"
   wrapper = suite.http container
-  bwrapper = suite.browser container
 
   describe "POST /sessions", ->
     it "should authenticate user", wrapper (callback) ->

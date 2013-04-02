@@ -8,3 +8,6 @@
 *.html
 *.js
 *.css
+
+# ignore test result
+test-results.xml

@@ -9,6 +9,8 @@ container.set "components", [
   "angular#~1.0",
   "angular-resource#~1.0",
   "angular-cookies#~1.0",
+  "angular-scenario#~1.0",
+  "angular-mocks#~1.0",
   "jquery#~1.9"
 ]
 
@@ -23,7 +25,10 @@ loader.use require "symfio-contrib-bower"
 loader.use (container, callback) ->
   connection = container.get "connection"
   unloader = container.get "unloader"
+  assets = container.get "assets serve helper"
   app = container.get "app"
+
+  assets path.join __dirname, "..", "test", "public"
 
   app.get "/user", (req, res) ->
     return res.send 401 unless req.user

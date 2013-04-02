@@ -31,3 +31,13 @@ describe "contrib-auth plugin example", ->
       @browser.pressButton "Send", =>
         @assert.equal "", errorMessage.style.getPropertyValue "display"
         callback()
+
+  it "should auth user and populate token in cookies", wrapper (callback) ->
+    @browser.visit "/", =>
+      @assert.isUndefined @browser.cookies().get "token"
+
+      @browser.fill "username", "username"
+      @browser.fill "password", "password"
+      @browser.pressButton "Send", =>
+        @assert.ok @browser.cookies().get "token"
+        callback()
