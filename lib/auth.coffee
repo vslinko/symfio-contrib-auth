@@ -28,7 +28,7 @@ module.exports = (container, callback) ->
     hashDigest "#{password}:#{salt}"
 
   TokenSchema = new mongoose.Schema
-    hash: type: String, required: true, index: unique: true
+    hash: type: String, required: true
     expires: type: Date, required: true
 
   UserSchema = new mongoose.Schema
