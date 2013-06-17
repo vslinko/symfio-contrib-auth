@@ -76,7 +76,7 @@ module.exports = (container, callback) ->
 
   app.use (req, res, callback) ->
     return callback() unless req.method is "GET"
-    return callback() unless /^\/sessions\/[0-9a-f]{24}$/.test req.url
+    return callback() unless /^\/sessions\/[0-9a-f]+$/.test req.url
 
     tokenHash = req.url.replace "/sessions/", ""
 
