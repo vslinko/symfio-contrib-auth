@@ -1,6 +1,6 @@
 {
   "name": "symfio-contrib-auth"
-, "version": "0.1.2"
+, "version": "0.1.3"
 , "description": "Authentication plugin. Uses tokens."
 , "keywords": ["symfio-plugin", "symfio-contrib", "auth"]
 , "homepage": "http://symf.io/plugins/contrib-auth"
