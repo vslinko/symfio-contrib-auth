@@ -63,12 +63,19 @@ module.exports = (container, callback) ->
       callback null, username: user.username, token: currentToken
 
   app.use (req, res, callback) ->
-    authHeader = req.get "Authorization"
+    if req.query['auth-token']
+      req.authToken = req.query['auth-token']
+    else
+      authHeader = req.get "Authorization"
+      if authHeader and authHeader.indexOf "Token " is 0
+        req.authToken = authHeader.replace "Token ", ""
 
-    return callback() unless authHeader
-    return callback() unless authHeader.indexOf "Token " is 0
+    callback()
 
-    tokenHash = authHeader.replace "Token ", ""
+  app.use (req, res, callback) ->
+    return callback() unless req.authToken
+
+    tokenHash = req.authToken
 
     findUser tokenHash, (err, user) ->
       req.user = user if user
